@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.NewsTypeMapper">
+
+<insert id="insertNewsType" useGeneratedKeys="true" keyProperty="typeId" parameterType="com.pojo.NewsType">
+
+insert into NewsType (typeName) values( #{typeName} )
+
+</insert>
+
+<delete id="deleteNewsType" parameterType="int">
+
+delete from NewsType where typeId=#{typeId}
+
+</delete>
+
+<select id="findAlllNewstype" resultType="com.pojo.NewsType">
+
+select * from NewsType
+
+</select>
+
+<select id="selectNewsTypeById"  parameterType="int" resultMap="newsTypeResultMap"  >
+
+select * from NewsType where typeId=#{typeId}
+
+</select>
+
+<resultMap type="com.pojo.NewsType" id="newsTypeResultMap">
+<id property="typeId" column="typeId"/>
+<result property="typeName" column="typeName"/>
+<collection property="newss" javaType="ArrayList"
+column="typeId" ofType="com.pojo.News" select="com.mapper.NewsMapper.selectNewsBynewsId" >
+<id property="newsId" column="newsId"/>
+<result property="title" column="title"/>
+<result property="content" column="content"/>
+<result property="publishDate" column="publishDate"/>
+<result property="author" column="author"/>
+<result property="click" column="click"/>
+<result property="isHead" column="isHead"/>
+<result property="isImage" column="isImage"/>
+<result property="imageName" column="imageName"/>
+<result property="isHot" column="isHot"/>
+
+
+</collection>
+
+</resultMap>
+
+
+</mapper>

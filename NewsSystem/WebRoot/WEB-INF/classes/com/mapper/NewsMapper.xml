@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.NewsMapper">
+<!-- 自动生成主见字段 -->
+<insert id="insertNews" useGeneratedKeys="true" keyProperty="newsId" parameterType="com.pojo.News">
+
+insert into News (title,content,publishDate,author,typeId,isHead,isImage,imageName,isHot,click) values(#{title},#{content},#{publishDate},#{author},#{typeId},#{isHead},#{isImage},#{imageName},#{isHot},#{click})
+
+</insert> 
+
+<update id="CountClick" parameterType="Integer">
+update News
+set click=click+1
+where newsId=#{newsId}
+
+
+</update>
+<update id="updateNews" parameterType="com.pojo.News" >
+
+update News
+set title=#{title},content=#{content},publishDate=#{publishDate},author=#{author},typeId=#{typeId},isHead=#{isHead},isHead=#{isHead},isImage=#{isImage},imageName=#{imageName},isHot=#{isHot}
+where newsId=#{newsId}
+
+</update>
+
+<delete id="deleteNews" parameterType="int">
+
+delete from News where newsId=#{newsId}
+
+</delete>
+
+<select id="findAllNews"  resultType="com.pojo.News">
+select * from News
+</select>
+
+<select id="findHotNews" resultType="com.pojo.News">
+
+select * from News where isHot=1
+
+</select>
+
+<select id="findHeadNews" resultType="com.pojo.News">
+
+select * from News where isHead=1
+
+</select>
+
+<select id="selectNewsBynewsId" parameterType="int" resultMap="newsResultMap">
+
+select * from News n  where  n.typeId=#{typeId}
+</select>
+
+
+<select id="selectNewsById" parameterType="int" resultMap="newsResultMap">
+select * from News ,NewsType where newsId=#{newsId}  and News.typeId=NewsType.typeId
+</select>
+
+
+
+<resultMap type="com.pojo.News" id="newsResultMap">
+<id property="newsId" column="newsId"/>
+<result property="title" column="title"/>
+<result property="content" column="content"/>
+<result property="publishDate" column="publishDate"/>
+<result property="author" column="author"/>
+<result property="typeId" column="typeId"/>
+<result property="click" column="click"/>
+<result property="isHead" column="isHead"/>
+<result property="isImage" column="isImage"/>
+<result property="imageName" column="imageName"/>
+<result property="isHot" column="isHot"/>
+
+<!-- 多对一关联映射:association   -->
+<association property="newsType" javaType="com.pojo.NewsType">
+
+ <id property="typeId" column="typeId"/>
+<result property="typeName" column="typeName"/>
+
+</association>
+
+<collection property="comments" javaType="ArrayList" 
+column="newsId" ofType="com.pojo.Comment" select="com.mapper.CommentMapper.selectCommentBynewsId">
+<id property="commentId" column="commentId"/>
+<result property="userId" column="userId"/>
+<result property="commentDate" column="commentDate"/>
+<result property="commentContent" column="commentContent"/>
+</collection>
+
+
+</resultMap>
+</mapper>

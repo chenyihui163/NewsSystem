@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.LinkMapper">
+
+<insert id="insertLink" useGeneratedKeys="true" keyProperty="linkId" parameterType="com.pojo.Link">
+
+insert into Link(linkName,linkUrl,linkEmail,orderNum) values (#{linkName},#{linkUrl},#{linkEmail},#{orderNum})
+
+
+</insert>
+
+<update id="updateLink" parameterType="Link" >
+
+update Link
+set linkName=#{linkName},linkUrl=#{linkUrl},linkEmail=#{linkEmail},orderNum=#{orderNum}
+where linkId=#{linkId}
+
+</update>
+
+<delete id="deleteLink" parameterType="int">
+
+delete from Link where linkId = #{linkId}
+
+</delete>
+
+<select id="findAllLink" resultType="com.pojo.Link">
+
+select * from Link
+</select>
+
+
+<select id="selectLinkById" parameterType="int" resultType="com.pojo.Link">
+
+select * from Link where linkId=#{linkId}
+
+</select>
+</mapper>

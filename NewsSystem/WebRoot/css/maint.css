@@ -1,0 +1,162 @@
+
+
+.navbar-brand {
+	font-weight: bold;
+}
+
+.news-title{
+	line-height: 1.5;
+}
+
+.news-status{
+	color: #999;
+}
+
+.news-content{
+	padding-top: 10px;
+	margin-top:10px;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.news-content img{
+	margin-bottom: 10px;
+}
+.dataHeader{
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.commentDatas{
+	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+}
+.comment{
+	padding: 5px 0;
+	
+}
+
+.comment:last-child{
+	border-bottom: none;
+}
+
+.discuss textarea{
+	width: 100%;
+}
+
+.side-bar-card2 a{
+	display:block;
+}
+.side-bar-card3 a{
+	display:block;
+}
+a:hover{
+	text-decoration: none;
+}
+
+.side-bar-card1,.side-bar-card2,.side-bar-card3{
+	border-radius:10px;
+}
+
+.side-bar-card1{
+	background: rgba(0,0,0,.05);
+	padding:10px 0;
+}
+
+.side-bar-card1{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.col-xs-5 {
+	padding-top: 30px;
+}
+img{
+	display:block;
+	max-width:100%;
+	border-radius:10px;
+}
+.col-xs-7{
+	padding-top:10px;
+	font-size:180%;
+}
+.side-bar-card1list{
+	font-size:70%;
+}
+.side-bar-card2{
+background: rgba(0,0,0,.05);	
+}
+.side-bar-card3{
+background: rgba(0,0,0,.05);
+margin-top: 15px;
+}
+.side-bar-card2 .card-title,
+.side-bar-card2 .card-body .list .item{
+	padding: 10px 10px;
+}
+.side-bar-card2 .card-title{
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 0px;
+	color:red;
+	
+}
+
+.side-bar-card2 .item,.side-bar-card3 .item{
+	color:#000;
+}
+.side-bar-card2 .card-body .list .item:hover{
+	background: rgba(0,0,0,.1);
+}
+
+.card-body .list .item .title{
+	padding-bottom: 5px;
+}
+.card-body .list .item .desc{
+	color:#999;
+}
+
+
+.side-bar-card3 .card-title,
+.side-bar-card3 .card-body .list .item{
+	padding: 15px 15px;
+}
+
+
+.side-bar-card3 .card-title{
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 0px;
+	color:red;
+	
+}
+.side-bar-card3 .card-body .list .item:hover{
+	background: rgba(0,0,0,.1);
+}
+
+
+.Links{
+	margin-top: 10px;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+}
+
+.Links .col-sm-3{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
+.Links .Link-list{
+	color:#000;
+	font-size: 16px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 20px;
+}
+
+.Links .Link-list:hover{
+	color:red;
+}

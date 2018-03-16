@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CommentMapper">
+ <insert id="insertComment" useGeneratedKeys="true" keyProperty="commentId" parameterType="com.pojo.Comment">
+ 
+ insert into Comment(newsId,userId,commentContent,commentDate) values(#{newsId},#{userId},#{commentContent},#{commentDate})
+ 
+ 
+ </insert>
+ 
+ <delete id="deleteComment" parameterType="int">
+ 
+ delete from Comment where commentId=#{commentId}
+ </delete>
+ 
+ <select id="findAllComment" resultType="com.pojo.Comment">
+ select * from Comment
+ </select>
+
+<select id="selectCommentById" parameterType="int" resultMap="commentResultMap">
+
+select * from Comment,News
+where commentId = #{commentId} and Comment.newsId=News.newsId
+
+</select>
+
+<select id="selectCommentBynewsId" parameterType="int" resultMap="commentResultMap">
+select * from Comment where newsId = #{newsId}
+</select>
+<!-- 映射Comment对象的resultMap -->
+<resultMap type="com.pojo.Comment" id="commentResultMap">
+
+
+<id property="commentId" column="commentId"/>
+<result property="userId" column="userId"/>
+<result property="newsId" column="newsId"/>
+<result property="commentDate" column="commentDate"/>
+<result property="commentContent" column="commentContent"/>
+<!-- 多对一关联映射:association   -->
+<association property="news" javaType="com.pojo.News" >
+
+<id property="newsId" column="newsId"/>
+<result property="title" column="title"/>
+<result property="content" column="content"/>
+<result property="publishDate" column="publishDate"/>
+<result property="author" column="author"/>
+<result property="typeId" column="typeId"/>
+
+<result property="click" column="click"/>
+<result property="isHead" column="isHead"/>
+<result property="isImage" column="isImage"/>
+<result property="imageName" column="imageName"/>
+<result property="isHot" column="isHot"/>
+</association>
+</resultMap>
+
+</mapper>
+

@@ -1,0 +1,58 @@
+
+ var code;
+        function createCode() {
+            code = "";
+            var codeLength = 4; //验证码的长度
+            var checkCode = document.getElementById("checkCode");
+            var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //所有候选组成验证码的字符，当然也可以用中文的
+            for (var i = 0; i < codeLength; i++) 
+            {
+                var charNum = Math.floor(Math.random() * 52);
+                code += codeChars[charNum];
+            }
+            if (checkCode) 
+            {
+                checkCode.className = "code";
+                checkCode.innerHTML = code;
+            }
+        }
+        
+        
+function validateCode()
+{
+	 var inputCode = document.getElementById("inputCode").value;
+	   var userId=document.getElementById("userId").value;
+       var password=document.getElementById("password").value;
+       alert(inputCode+" "+password+" "+userId);
+
+		
+		 if(inputCode.length<=0)
+			 {
+			  layer.alert("验证码不能为空，请重新输入",{
+				   icon:5				  
+			
+				   }); 
+			 }
+		  else if (inputCode.toUpperCase() != code.toUpperCase()) 
+          {
+          
+        
+                 layer.alert("验证码有误，请重新输入",{
+				   icon:5				  
+				  
+				   }); 
+              createCode();
+          }
+		  else
+			  {
+			  
+			   var form = document.forms[0];
+		       form.action = "login/loginUser";
+		     
+		       form.submit();
+			  }
+	 
+
+}
